@@ -39,7 +39,6 @@ $(document).ready(function(){
 				var enemy = $('#darthmaul').detach();
 				enemy.appendTo($('#enemies'));
 			}	
-
 		}
 
 		else if (charChosen === true) {
