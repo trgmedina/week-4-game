@@ -1,14 +1,15 @@
 $(document).ready(function(){
 
 	var lockChar = false;
-	var character;
+	var charChosen = false;
 
 	$(document).on("click", ".imageBox", function() {
 		
-		if(!lockChar) {
+		if(!charChosen && !lockChar) {
 
-			character = $(this).detach();
+			var character = $(this).detach();
 			character.appendTo($('#userChar'));
+			charChosen = true;
 			lockChar = true;
 
 			if ($(this).attr('id') !== 'yoda') {
@@ -39,6 +40,15 @@ $(document).ready(function(){
 				enemy.appendTo($('#enemies'));
 			}	
 
+		}
+
+		else if (charChosen === true) {
+			$(this).css('background-color', 'black');
+			$(this).css('border-color', 'green');
+			$(this).css('color', 'white');
+			var chosenEnemy = $(this).detach();
+			chosenEnemy.appendTo($('#defender'));
+			charChosen = false;
 		}
 
 		
