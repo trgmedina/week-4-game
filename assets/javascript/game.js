@@ -50,11 +50,11 @@ $(document).ready(function(){
 			chosenEnemy.appendTo($('#defender'));
 			charChosen = false;
 		}
-
-		
-
-
-
 	});
 
+	$('.fight-button').on('click', function() {
+		var yodaHP = '50';
+		$('#yodaHP').html(yodaHP);
+		console.log(yodaHP);
+	});
 });
