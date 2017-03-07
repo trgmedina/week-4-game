@@ -138,9 +138,9 @@ $(document).ready(function(){
 		}
 	});
 
-function newEnemy() {
-	charChosen = true;
-}
+	function newEnemy() {
+		charChosen = true;
+	}
 
 	$('.fight-button').on('click', function() {
 		if (enemyChosen) {
@@ -184,5 +184,9 @@ function newEnemy() {
 				playerAtkPts = Math.floor(playerAtkPts + (playerAtkPts/2));
 			}
 		}
+	});
+
+	$('.restart-button').on('click', function() {
+		location.reload();
 	});
 });
