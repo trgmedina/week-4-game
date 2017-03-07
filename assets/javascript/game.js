@@ -6,14 +6,15 @@ $(document).ready(function(){
 	var userCharID = '';
 	var enemyID = '';
 	var enemyName = '';
-	var enemyHP = '';
-	var userHP = 0;
+	var enemyHP;
+	var userHP;
+	var enemyCt = 3;
 	var characters = {
 		attackPts: {
-			obiwan: 15,
-			yoda: 25,
-			darthmaul: 20,
-			darthvadar: 30
+			obiwan: 10,
+			yoda: 20,
+			darthmaul: 15,
+			darthvadar: 25
 		},
 		healthPts: {
 			obiwan: 120,
@@ -40,15 +41,19 @@ $(document).ready(function(){
 			//sets up player's attack 
 			if (userCharID === 'yoda') {
 				playerAtkPts = characters.attackPts.yoda;
+				userHP = characters.healthPts.yoda;
 			}
 			else if (userCharID === 'obiwan') {
 				playerAtkPts = characters.attackPts.obiwan;
+				userHP = characters.healthPts.obiwan;
 			}
 			else if (userCharID === 'darthvadar') {
 				playerAtkPts = characters.attackPts.darthvadar;
+				userHP = characters.healthPts.darthvadar;
 			}
 			else {
 				playerAtkPts = characters.attackPts.darthmaul;
+				userHP = characters.healthPts.darthmaul;
 			}
 
 			console.log(playerAtkPts);
@@ -126,39 +131,56 @@ $(document).ready(function(){
 					enemyHP = characters.healthPts.darthmaul;
 				}	
 
-				console.log(enemy, enemyAtkPts, enemyHP);
+				//console.log(enemy, enemyAtkPts, enemyHP);
 			}
 
 			setUpEnemy();
 		}
 	});
 
-	$('.fight-button').on('click', function() {
-		if (enemyChosen === true) {
+function newEnemy() {
+	charChosen = true;
+}
 
-			if (enemyHP > 0) {
-				$('#userAtk-summary').text('You attacked ' + enemyName + ' for ' + playerAtkPts + ' damage.');
-				$('#enemyAtk-summary').text(enemyName + ' attacked you back for ' + enemyAtkPts + ' damage.');
+	$('.fight-button').on('click', function() {
+		if (enemyChosen) {
+
+			if (enemyHP > 0 && userHP > 0) {
 				
 				enemyHP = enemyHP - playerAtkPts;
-				if (enemyHP >= 0) {
+				if (enemyHP > 0) {
 					$('#' + enemyID + 'HP').text(enemyHP);
+					$('#userAtk-summary').text('You attacked ' + enemyName + ' for ' + playerAtkPts + ' damage.');
+					$('#enemyAtk-summary').text(enemyName + ' attacked you back for ' + enemyAtkPts + ' damage.');
 				}
 				else {
-					$('#' + enemyID + 'HP').text('0');
+					$('#' + enemyID).remove();	
+
+					if (enemyCt > 1) {
+						$('#userAtk-summary').text('You have defeated ' + enemyName + '!');
+						$('#enemyAtk-summary').text('You can choose to fight another enemy.');
+						enemyCt--;
+					}	
+					else {
+						$('#userAtk-summary').text('You have defeated ' + enemyName + '!');
+						$('#enemyAtk-summary').text('You won! Game Over!');
+					}
+
+					newEnemy();			
 				}
-				
+
+				userHP = userHP - enemyAtkPts;
+				if (userHP > 0) {
+					$('#' + userCharID + 'HP').text(userHP);
+				}
+				else {
+					$('#' + userCharID + 'HP').text('0');
+					$('#userAtk-summary').text('You have been defeated.');
+					$('#enemyAtk-summary').text('Game over!');
+				}
+
 				playerAtkPts = Math.floor(playerAtkPts + (playerAtkPts/2));
 			}
-			else {
-
-			}
-
-
-
-			// var yodaHP = '50';
-			// $('#yodaHP').text(yodaHP);
-			// console.log(yodaHP);
 		}
 	});
 });
