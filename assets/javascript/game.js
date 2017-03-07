@@ -31,7 +31,7 @@ $(document).ready(function(){
 	$('#darthmaulHP').text(characters.healthPts.darthmaul);
 	$('#darthvadarHP').text(characters.healthPts.darthvadar);
 
-	$(document).on("click", ".imageBox", function() {
+	$(document).on('click', '.imageBox', function() {
 		
 		if(!charChosen && !lockChar) {
 
@@ -66,29 +66,29 @@ $(document).ready(function(){
 
 			//Chnages non-selected characters to enemies to choose from
 			if (userCharID !== 'yoda') {
-				$('#yoda').css("background-color", "red");
-				$('#yoda').css("border-color", "black");
+				$('#yoda').css('background-color', 'red');
+				$('#yoda').css('border-color', 'black');
 				var enemy = $('#yoda').detach();
 				enemy.appendTo($('#enemies'));
 			}
 
 			if (userCharID !== 'obiwan') {
-				$('#obiwan').css("background-color", "red");
-				$('#obiwan').css("border-color", "black");
+				$('#obiwan').css('background-color', 'red');
+				$('#obiwan').css('border-color', 'black');
 				var enemy = $('#obiwan').detach();
 				enemy.appendTo($('#enemies'));
 			}
 
 			if (userCharID !== 'darthvadar') {
-				$('#darthvadar').css("background-color", "red");
-				$('#darthvadar').css("border-color", "black");
+				$('#darthvadar').css('background-color', 'red');
+				$('#darthvadar').css('border-color', 'black');
 				var enemy = $('#darthvadar').detach();
 				enemy.appendTo($('#enemies'));
 			}
 
 			if (userCharID !== 'darthmaul') {
-				$('#darthmaul').css("background-color", "red");
-				$('#darthmaul').css("border-color", "black");
+				$('#darthmaul').css('background-color', 'red');
+				$('#darthmaul').css('border-color', 'black');
 				var enemy = $('#darthmaul').detach();
 				enemy.appendTo($('#enemies'));
 			}	
