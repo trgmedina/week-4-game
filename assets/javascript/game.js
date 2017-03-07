@@ -164,6 +164,7 @@ function newEnemy() {
 					else {
 						$('#userAtk-summary').text('You have defeated ' + enemyName + '!');
 						$('#enemyAtk-summary').text('You won! Game Over!');
+						$('.restart-button').css('visibility', 'visible');
 					}
 
 					newEnemy();			
@@ -177,6 +178,7 @@ function newEnemy() {
 					$('#' + userCharID + 'HP').text('0');
 					$('#userAtk-summary').text('You have been defeated.');
 					$('#enemyAtk-summary').text('Game over!');
+					$('.restart-button').css('visibility', 'visible');
 				}
 
 				playerAtkPts = Math.floor(playerAtkPts + (playerAtkPts/2));
